@@ -94,3 +94,22 @@ Spring web, Spring Boot Actuator
     $ curl localhost:8080/hello-world
     {"id":1,"content":"Hello, Stranger!"}
 
+6) Switch to a Different Server Port
+   Spring Boot Actuator defaults to running on port 8080.
+   By adding an application.properties file, you can override that setting. The following listing (from src/main/resources/application.properties)shows that file with the necessary changes:
+
+   Run the server again by running the following command in a terminal:
+
+   $ ./gradlew clean build && java -jar build/libs/gs-actuator-service-0.1.0.jar
+   The service now starts on port 9000.
+
+   You can test that it is working on port 9000 by running the following commands in a terminal:
+
+   $ curl localhost:8080/hello-world
+        curl: (7) Failed to connect to localhost port 8080: Connection refused
+   $ curl localhost:9000/hello-world
+        {"id":1,"content":"Hello, Stranger!"}
+   $ curl localhost:9001/
+        {"timestamp":"2022-12-02T21:41:41.683+00:00","status":404,"error":"Not Found","path":"/"}%
+   $ curl localhost:9001/actuator/health
+         {"status":"UP"}
