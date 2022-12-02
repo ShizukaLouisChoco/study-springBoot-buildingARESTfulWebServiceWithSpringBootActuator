@@ -120,3 +120,6 @@ Spring web, Spring Boot Actuator
        -Your management endpoint is responsive.
    Note that the tests start the application on a random port. The following listing shows the test class:
 
+8) Summary
+   Congratulations! You have just developed a simple RESTful service by using Spring, and you added some useful built-in services with Spring Boot Actuator.
+
