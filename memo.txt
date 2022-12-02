@@ -123,3 +123,4 @@ Spring web, Spring Boot Actuator
 8) Summary
    Congratulations! You have just developed a simple RESTful service by using Spring, and you added some useful built-in services with Spring Boot Actuator.
 
+9) It works correctly !
