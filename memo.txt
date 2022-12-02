@@ -77,3 +77,14 @@ Spring web, Spring Boot Actuator
    It does so by using one of Spring’s message converters. Because Jackson 2 is in the classpath, MappingJackson2HttpMessageConverter will handle the conversion of a Greeting object to JSON if the request’s Accept header specifies that JSON should be returned.
 
    *How do you know Jackson 2 is on the classpath? Either run ` mvn dependency:tree` or ./gradlew dependencies, and you get a detailed tree of dependencies that includes Jackson 2.x. You can also see that it comes from /spring-boot-starter-json, itself imported by spring-boot-starter-web.
+
+4) Run the Application
+   You can run the application from a custom main class or directly from one of the configuration classes.
+   For this simple example, you can use the SpringApplication helper class. Note that this is the application class that the Spring Initializr created for you, and you need not even modify it for it to work for this simple application. The following listing (from src/main/java/com/example/actuatorservice/HelloWorldApplication.java) shows the application class:
+
+   In a conventional Spring MVC application, you would add @EnableWebMvc to turn on key behaviors, including configuration of a DispatcherServlet. But Spring Boot turns on this annotation automatically when it detects spring-webmvc on your classpath.
+   This sets you up to build a controller in an upcoming step.
+
+   The @SpringBootApplication annotation also brings in a @ComponentScan annotation, which tells Spring to scan the com.example.actuatorservice package for those controllers (along with any other annotated component classes).
+
+
