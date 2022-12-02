@@ -87,4 +87,10 @@ Spring web, Spring Boot Actuator
 
    The @SpringBootApplication annotation also brings in a @ComponentScan annotation, which tells Spring to scan the com.example.actuatorservice package for those controllers (along with any other annotated component classes).
 
+5) Build an executable JAR
+   You can run the application
+    Once the service is running (because you ran spring-boot:run in a terminal), you can test it by running the following command in a separate terminal:
+
+    $ curl localhost:8080/hello-world
+    {"id":1,"content":"Hello, Stranger!"}
 
