@@ -1,0 +1,53 @@
+Building a RESTful Web Service with Spring Boot Actuator
+    Spring Boot Actuator is a sub-project of Spring Boot.
+    It adds several production grade services to your application with little effort on your part.
+    In this guide, you will build an application and then see how to add these services.
+
+What You Will build
+    This guide takes you through creating a “Hello, world” RESTful web service with Spring Boot Actuator.
+    You will build a service that accepts the following HTTP GET request:
+        $ curl http://localhost:9000/hello-world
+    It responds with the following JSON:
+        {"id":1,"content":"Hello, World!"}COPY
+    There are also many features added to your application for managing the service in a production (or other) environment.
+    The business functionality of the service you build is the same as in Building a RESTful Web Service.
+    You need need not use that guide to take advantage of this one, although it might be interesting to compare the results.
+
+Initial dependencies:
+Spring web, Spring Boot Actuator
+
+
+1) Run the Empty Service
+   The Spring Initializr creates an empty application that you can use to get started. The following example (from src/main/java/com/example/actuatorservice/ActuatorServiceApplication in the initial directory) shows the class created by the Spring Initializr:
+   The @SpringBootApplication annotation provides a load of defaults (like the embedded servlet container), depending on the contents of your classpath and other things. It also turns on Spring MVC’s @EnableWebMvc annotation, which activates web endpoints.
+
+   There are no endpoints defined in this application, but there is enough to launch things and see some of Actuator’s features.
+   The SpringApplication.run() command knows how to launch the web application. All you need to do is run the following command:
+
+   $ ./gradlew clean build && java -jar build/libs/gs-actuator-service-0.1.0.jarCOPY
+   You have yet to write any code, so what is happening? To see the answer, wait for the server to start, open another terminal, and try the following command (shown with its output):
+
+   =>GUI run -> terminal curl
+
+   $ curl localhost:8080
+     {"timestamp":"2022-12-02T17:13:21.556+00:00","status":404,"error":"Not Found","path":"/"}
+   The output of the preceding command indicates that the server is running but that you have not defined any business endpoints yet.
+   Instead of a default container-generated HTML error response, you see a generic JSON response from the Actuator /error endpoint.
+   You can see in the console logs from the server startup which endpoints are provided out of the box.
+   You can try a few of those endpoints, including the /health endpoint.
+   The following example shows how to do so:
+   $ curl localhost:8080/error
+    {"timestamp":"2022-12-02T17:27:56.519+00:00","status":999,"error":"None"}%
+
+   $ curl localhost:8080/health
+    {"timestamp":"2022-12-02T17:28:21.596+00:00","status":404,"error":"Not Found","path":"/health"}%
+
+   $ curl localhost:8080/actuator
+    {"_links":{"self":{"href":"http://localhost:8080/actuator","templated":false},"health-path":{"href":"http://localhost:8080/actuator/health/{*path}","templated":true},"health":{"href":"http://localhost:8080/actuator/health","templated":false}}}%
+
+   $ curl localhost:8080/actuator/health
+    {"status":"UP"}
+   The status is UP, so the actuator service is running.
+
+   See Spring Boot’s Actuator Project for more details.
+
