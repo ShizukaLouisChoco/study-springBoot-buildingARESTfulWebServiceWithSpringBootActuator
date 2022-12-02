@@ -113,3 +113,10 @@ Spring web, Spring Boot Actuator
         {"timestamp":"2022-12-02T21:41:41.683+00:00","status":404,"error":"Not Found","path":"/"}%
    $ curl localhost:9001/actuator/health
          {"status":"UP"}
+
+7) Test Your Application
+   To check whether your application works, you should write unit and integration tests for your application. The test class in src/test/java/com/example/actuatorservice/HelloWorldApplicationTests.java ensures that
+       -Your controller is responsive.
+       -Your management endpoint is responsive.
+   Note that the tests start the application on a random port. The following listing shows the test class:
+
